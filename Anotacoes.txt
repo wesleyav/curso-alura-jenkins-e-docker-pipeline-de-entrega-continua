@@ -873,6 +873,7 @@ cd /vagrant/scripts
 sudo docker images
 
 ################################################
+<<<<<<< HEAD
 
 # Instalar o plugin Config File Provider
 
@@ -930,3 +931,5 @@ sudo docker images
     fi
 
 ################################################
+=======
+>>>>>>> 4159bf962ef465bbc8919eeec4152edd804eaf03
