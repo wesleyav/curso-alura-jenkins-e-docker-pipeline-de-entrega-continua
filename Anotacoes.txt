@@ -800,7 +800,7 @@ $ cd ..
         vi to_do/.env
             [config]
             # Secret configuration
-            SECRET_KEY = 'r*5ltfzw-61ksdm41fuul8+hxs$86yo9%k1%k=(!@=-wv4qtyv'
+            SECRET_KEY = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
 
             # conf
             DEBUG=True
