@@ -825,3 +825,22 @@ $ cd ..
         http://192.168.33.10:8000
 
 ################################################
+
+# Verificando o status do container do docker
+$ sudo docker ps
+
+# Expor o deamon do docker
+    sudo mkdir -p /etc/systemd/system/docker.service.d/
+    sudo vi /etc/systemd/system/docker.service.d/override.conf
+        [Service]
+        ExecStart=
+        ExecStart=/usr/bin/dockerd -H fd:// -H tcp://0.0.0.0:2376
+
+    # Ainda na mesma pasta, jenkins-todo-list
+    # Reloado no deamon
+    sudo systemctl daemon-reload
+
+    # Restartar o serviço do docker
+    sudo systemctl restart docker.service
+
+################################################
