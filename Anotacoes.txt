@@ -24,11 +24,7 @@
                     Nome completo: Jenkins Alura
                     Email: aluno@alura.com.br
 
-                # Reload nas permissoes do docker
-                    sudo usermod -aG docker $USER
-                    sudo usermod -aG docker jenkins
-                    exit
-            vagrant reload
+                
 
 # VirtualBox
 # https://download.virtualbox.org/virtualbox/6.0.8/VirtualBox-6.0.8-130520-Win.exe
@@ -728,5 +724,33 @@ $ ls -l
 # Criar um repositório no github: jenkins-todo-list
     git remote add origin git@github.com:<seu-usuario>/jenkins-todo-list.git
     git push -u origin master
+
+################################################
+
+# Configurando a chave privada criada no ambiente da VM no Jenkins
+    cat ~/.ssh/id_rsa
+    Credentials -> Jenkins -> Global Credentials -> Add Crendentials -> SSH Username with private key [ github-ssh ]
+# Criando o primeiro  job que vai monitorar o repositorio
+    Novo job -> jenkins-todo-list-principal -> Freestyle project:
+    Esse job vai fazer o build do projeto e registrar a imagem no repositório.
+    # Gerenciamento de código fonte:
+        Git: git@github.com:rafaelvzago/treinamento-devops-alura.git [SSH]
+        Credentials: git (github-ssh)
+        Branch: master
+    # Trigger de builds
+        Pool SCM: * * * * *
+    # Ambiente de build
+        Delete workspace before build starts
+    # Salvar
+    # Validar o log em: Git Log de consulta periódica
+
+# No terminal, voltar para a raiz
+$ cd ..
+
+# Reload nas permissoes do docker
+    sudo usermod -aG docker $USER
+    sudo usermod -aG docker jenkins
+    exit
+  vagrant reload
 
 ################################################
